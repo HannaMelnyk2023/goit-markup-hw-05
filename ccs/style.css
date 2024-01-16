@@ -133,10 +133,6 @@ img {
 .header-address {
   display: flex;
   margin-left: auto;
-
-  transition-property: color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-address-item:not(:last-child) {
@@ -158,6 +154,10 @@ img {
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: 0.02em;
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Головна сторинка */
@@ -214,6 +214,10 @@ img {
   text-align: center;
 }
 /* Модальне вікно */
+
+/*   transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); */
+
 .backdrop {
   position: fixed;
   top: 0;
@@ -222,49 +226,44 @@ img {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 
+  /* transition: visibility 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    opasity 250ms cubic-bezier(0.4, 0, 0.2, 1); */
+
   z-index: 1000;
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop.is-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-
-  transition: transform 250s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  /* animation: scaleup 250ms cubic-bezier(0.4, 0, 0.2, 1); */
 }
-
-/* Початковий стан */
-.backdrop.is-hidden .modal-wrapper {
-  opacity: 0;
-  transform: translate(-50%, -50%), scale(0.2);
-}
-
-/* Стан після анімації */
-.backdrop .modal-wrapper {
-  opacity: 1;
-  transform: translate(-50%, -50%), scale(1);
-}
-
 .modal-wrapper {
   position: absolute;
 
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  /* transform: translate(-50%, -50%); */
 
   background-color: var(--logo-whitecolor);
-  width: 528px;
-  height: 581px;
+  min-width: 528px;
+  min-height: 581px;
   border-radius: 4px;
-
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 250 ms cubic-bezier(0.4, 0, 0.2, 1);
+    opasity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* Початковий стан */
+.backdrop.is-hidden .modal-wrapper {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.2);
+}
+
+/* Стан після анімації */
+.backdrop .modal-wrapper {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
 .modal-btn {
   position: absolute;
   top: 14px;
@@ -280,6 +279,7 @@ img {
   border: 1px solid #0000001a;
   cursor: pointer;
 }
+
 .modal-icon {
   fill: #000000;
 }
@@ -454,10 +454,12 @@ img {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .social-link:hover .social-icon,
-.social-link:focus .social-icon,
+.social-link:focus .social-icon {
+  fill: var(--prime-white-background);
+}
+
 .social-link:focus,
 .social-link:hover {
-  fill: var(--prime-white-background);
   background-color: var(--accent-background);
 }
 
